@@ -1,0 +1,7 @@
+<div class="list-edit__shadow"  (click)="closeWindow()">
+  <div class="list-edit"  (click)="$event.stopPropagation();false">
+    <button class="button-square" (click)="onSubmit()">Отправить список хостов</button>
+    <textarea rows="15" cols="17" [(ngModel)]="hostAddListStr" (ngModelChange)="changeHandler()"></textarea>
+    <small>В списке {{hostsArray.length}} валидных адресов</small>
+  </div>
+</div>

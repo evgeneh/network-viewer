@@ -1,0 +1,17 @@
+<div class="host-add">
+  <div>
+      <button class="button-round button-round__open" (click)="toggleInput()" >{{buttonSymbol}}</button>
+  </div>
+  <div class="host-add__form" *ngIf="isInputShow">
+      <span>Добавить ноый ip-адрес:</span>
+
+      <input type="text" [ngClass]="{'ip-error' :  isNewHostAddDisabled}" [(ngModel)]="newHost" (ngModelChange)="changeHandler()" placeholder="введите адрес">
+      <button class="button-round button-round__icon" (click)="showIpList=true">
+        <img src="../../assets/list.svg" height="30px"  >
+      </button>
+      <div class="host-add__send">
+        <button class="button-square" [disabled]=" isNewHostAddDisabled" (click)="addHost()" >Добавить</button>
+      </div>
+  </div>
+</div>
+<app-list-edit (submit)="submitList($event)" (close)="closeList()" *ngIf="showIpList"></app-list-edit>

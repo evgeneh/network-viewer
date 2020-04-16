@@ -1,0 +1,32 @@
+<ul>
+  <li class="host">
+    <span style="padding: 8px 0;">Адреса хостов</span>
+    <div class='host-discription'>
+      <span>Процент потерь</span>
+      <div class="host-connection ">Задержка</div>
+      <div class="host-connection host-connection__jitter">Джиттер</div>
+    </div>
+  </li>
+  <li *ngFor="let singleHost of hosts" class="host">
+    <h3 [ngClass]="{'unavailable-host' :  singleHost.is_available}" >
+      {{singleHost.ip}}
+    </h3>
+    <div class='host-discription'*ngIf="singleHost.is_available else unavailable">
+      <span>Потеря пакетов: {{singleHost.per_loss}}%</span>
+      <div class="host-connection">{{singleHost.avg_latency| number : '1.3-3'}} мс</div>
+      <div class="host-connection host-connection__jitter">{{singleHost.jitter| number : '1.3-3'}} мс</div>
+      <div class="host-update">обновлён: <br/>{{singleHost.updated | date: 'dd.MM.yy HH:mm'}}</div>
+    </div>
+    <ng-template #unavailable>
+      <div class='host-discription host-discription__dead'>
+        <span>Не отвечает.</span>
+      </div>
+    </ng-template>
+    <button class="button-round button-round__icon" (click)="updateHost(singleHost.id)" [disabled]="blockedHosts.includes(singleHost.id)">
+        <img src="../../assets/update.svg" width="30px"  >
+    </button>
+    <button class="button-round button-round__icon" (click)="deleteHost(singleHost.id)"  [disabled]="blockedHosts.includes(singleHost.id)">
+      <img src="../../assets/rubbish.svg" height="22px">
+    </button>
+  </li>
+</ul>

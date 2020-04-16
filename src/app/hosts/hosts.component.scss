@@ -1,0 +1,52 @@
+
+h3 {
+  display: inline-block;
+  padding-top: 5px;
+}
+
+.host {
+  padding: 10px 0;
+  margin: 5px 0;
+  border-bottom: solid 1px lightgray;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 185px 1fr 40px 40px;
+}
+
+.unavailable-host {
+  color: gray;
+}
+
+.host-discription {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 210px 82px 82px 1fr;
+  span {
+    padding: 8px 2px;
+  }
+
+}
+.host-discription__dead {
+  grid-template-columns: auto;
+}
+
+.host-connection {
+  border: 1px solid mediumblue;
+  padding: 10px 4px 8px 4px;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.host-connection__jitter {
+  border-color: #333333;
+}
+
+.host-update {
+  padding: 3px;
+  font-size: 0.7rem;
+  color: #555555;
+  text-align: right;
+}
+
+

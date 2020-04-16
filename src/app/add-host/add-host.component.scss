@@ -1,0 +1,45 @@
+.host-add {
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 45px 1fr;
+}
+.host-add__form {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto auto 40px 1fr;
+  grid-gap: 10px;
+  span {
+    padding: 10px;
+  }
+}
+
+.button-round__open {
+  background: blue;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 2px;
+}
+.button-round__open:hover {
+  background: mediumblue;
+}
+
+
+input {
+  width: 200px;
+  height: 20px;
+
+  background: #f6f6f6;
+  border: 1px solid #cecece;
+  border-radius: 3px ;
+  padding: 8px 0 8px 15px;
+  font-size: 1rem;
+}
+
+.ip-error {
+  box-shadow: 0 0 3px #CC0000;
+}
+
+.host-add__send {
+  text-align: right;
+}
