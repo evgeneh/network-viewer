@@ -3,7 +3,6 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 
-import { hostList } from '../data';
 import { Host, HostsRequest, OneHostRequest } from '../Models/hosts';
 
 const httpOptions = {

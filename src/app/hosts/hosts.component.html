@@ -22,10 +22,10 @@
         <span>Не отвечает.</span>
       </div>
     </ng-template>
-    <button class="button-round button-round__icon" (click)="updateHost(singleHost.id)" [disabled]="blockedHosts.includes(singleHost.id)">
+    <button class="button-round button-round__icon" (click)="onHostUpdate(singleHost.id)" [disabled]="blockedHosts.includes(singleHost.id)">
         <img src="../../assets/update.svg" width="30px"  >
     </button>
-    <button class="button-round button-round__icon" (click)="deleteHost(singleHost.id)"  [disabled]="blockedHosts.includes(singleHost.id)">
+    <button class="button-round button-round__icon" (click)="onHostDelete(singleHost.id)"  [disabled]="blockedHosts.includes(singleHost.id)">
       <img src="../../assets/rubbish.svg" height="22px">
     </button>
   </li>

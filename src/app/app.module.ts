@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HostsComponent } from './hosts/hosts.component';
 import { AddHostComponent } from './add-host/add-host.component';
 import { ListEditComponent } from './list-edit/list-edit.component';
+import { HostsContainerComponent } from './hosts-container/hosts-container.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ListEditComponent } from './list-edit/list-edit.component';
     AppComponent,
     HostsComponent,
     AddHostComponent,
-    ListEditComponent
+    ListEditComponent,
+    HostsContainerComponent
   ],
   imports: [
     BrowserModule,

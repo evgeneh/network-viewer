@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {validateIPAddress} from '../../common/validator';
-import {Host} from '../Models/hosts';
 import {HostsService} from '../services/hosts.service';
 
 @Component({
@@ -15,6 +14,7 @@ export class AddHostComponent {
   newHost = '';
   isNewHostAddDisabled = false;
   showIpList = false;
+  @Output() getHostList = new EventEmitter();
   //
   constructor(private hostsService: HostsService) {}
   /*show upload form if click*/
@@ -42,6 +42,7 @@ export class AddHostComponent {
       this.hostsService.addNewHostList(hosts).subscribe((result) => {
         if (result) {
           this.newHost = '';
+          this.getHostList.emit();
         }
       });
     }
