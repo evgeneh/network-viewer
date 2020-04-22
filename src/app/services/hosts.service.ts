@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';
 
-import { Host, HostsRequest, OneHostRequest } from '../Models/hosts';
+import { Host, HostsRequest } from '../Models/hosts';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -22,8 +22,8 @@ export class HostsService {
     };
   }
   getHostsList(): Observable<Host[]>  {
-    return this.http.get<HostsRequest>(this.baseUrl + 'hosts').pipe(
-      map((val: HostsRequest) => {
+    return this.http.get<HostsRequest<Host[]>>(this.baseUrl + 'hosts').pipe(
+      map((val: HostsRequest<Host[]>) => {
         console.log(val);
         if (val.success) {
           return val.data;
@@ -37,8 +37,8 @@ export class HostsService {
     );
   }
   addNewHost(host: string): Observable<boolean> {
-    return this.http.post<HostsRequest>(this.baseUrl + 'host', {ip: host}, httpOptions).pipe(
-      map((value: HostsRequest) => {
+    return this.http.post<HostsRequest<void>>(this.baseUrl + 'host', {ip: host}, httpOptions).pipe(
+      map((value: HostsRequest<void>) => {
         if (value.success)
         {
            return true;
@@ -52,8 +52,8 @@ export class HostsService {
   }
   addNewHostList(hostsList: string[]): Observable<boolean>{
     const reqBody = {length: hostsList.length, data: hostsList};
-    return this.http.post<HostsRequest>(this.baseUrl + 'hosts', reqBody, httpOptions).pipe(
-      map((value: HostsRequest) => {
+    return this.http.post<HostsRequest<void>>(this.baseUrl + 'hosts', reqBody, httpOptions).pipe(
+      map((value: HostsRequest<void>) => {
         if (value.success)
         {
           return true;
@@ -67,16 +67,16 @@ export class HostsService {
   }
   deleteHost(id: number) {
     const url = `${this.baseUrl}host/${id}`;
-    return this.http.delete<HostsRequest>(url, httpOptions).pipe(
+    return this.http.delete<HostsRequest<void>>(url, httpOptions).pipe(
       tap(() => { console.log(`deleted id=${id}`);
       },
-      catchError(this.handleError<HostsRequest>('deleteHost'))
+      catchError(this.handleError<HostsRequest<void>>('deleteHost'))
     ));
   }
   updateHost(id: number) {
     const url = `${this.baseUrl}host/${id}`;
-    return this.http.put<OneHostRequest>(url, httpOptions).pipe(
-      map((val: OneHostRequest) => {
+    return this.http.put<HostsRequest<Host>>(url, httpOptions).pipe(
+      map((val: HostsRequest<Host>) => {
         console.log('req success: ' + val.success);
         if (val.success) {
           return val.data;

@@ -10,14 +10,9 @@ export interface Host {
   updated: Date;
 }
 
-export interface HostsRequest {
-  data?: Host[] ;
+export interface HostsRequest<T> {
+  data?: T ;
   error: string | null;
   success: boolean;
 }
 
-export interface OneHostRequest {
-  data?: Host;
-  error: string | null;
-  success: boolean;
-}
